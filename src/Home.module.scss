@@ -2,27 +2,49 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 16px;
+    background: radial-gradient(ellipse at center, #f04825 40%,#b7371d 100%);
+    color: white;
+    text-shadow: 0 0 3rem rgba(0,0,0,0.4);
   }
 }
 
-:local {
-  
-  .guardian-container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
+@keyframes fader {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
   }
-  .guardian-name {
-    font-size: 8rem; 
-    font-weight: 700;
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  90% { opacity: 0; }
+  100% {
+    opacity: 0;
+    transform: scale(1);
   }
-  .tribal-name {
-    font-size: 4rem;
-  }
+}
+.guardian-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background-image: url('micosay-logo-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+.guardian {
+  animation: 5s ease-out fader;
+  animation-iteration-count: infinite;
+}
+.guardian-name {
+  font-size: 8rem; 
+  font-weight: 700;
+}
+.reset { opacity: 0; }
+.tribal-name {
+  font-size: 4rem;
 }

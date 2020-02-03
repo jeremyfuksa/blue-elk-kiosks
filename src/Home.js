@@ -15,6 +15,12 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    const item = this.props.data[0];
+    this.setState(prevState =>({
+      counter: prevState.counter + 1,
+      guardianName: item.guardianName,
+      tribalName: item.tribalName
+    }));
     const interval = setInterval(() => {
       const item = this.props.data[this.state.counter];
       if (this.state.counter > this.state.numRecords) {
@@ -35,10 +41,10 @@ class Home extends React.Component {
 
   render() {
     return(
-      <div cx='guardian-container'>
-        <div cx='guardian'>
-          <div cx='guardian-name'>{this.state.guardianName}</div>
-          {this.state.tribalName != '' ? <div cx='tribal-name'>{this.state.tribalName}</div> : ''}
+      <div className='guardian-container'>
+        <div className='guardian'>
+          <div className='guardian-name'>{this.state.guardianName}</div>
+          {this.state.tribalName != '' ? <div className='tribal-name'>{this.state.tribalName}</div> : ''}
         </div>
       </div>
     );

@@ -27,8 +27,9 @@ server
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
-        <title>Welcome to Razzle</title>
+        <title>Blue Elk Tribal Guardian Roll</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
         ${
           assets.client.css
             ? `<link rel="stylesheet" href="${assets.client.css}">`
