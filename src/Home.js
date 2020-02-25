@@ -7,45 +7,59 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0,
       numRecords: this.props.data.size,
-      guardianName: '',
-      tribalName: ''
+      pageContent: [],
+      counter: 0,
+      page: 1
     };
   }
 
   componentDidMount() {
-    const item = this.props.data[0];
-    this.setState(prevState =>({
-      counter: prevState.counter + 1,
-      guardianName: item.guardianName,
-      tribalName: item.tribalName
-    }));
-    const interval = setInterval(() => {
-      const item = this.props.data[this.state.counter];
-      if (this.state.counter > this.state.numRecords) {
-        this.setState({
-          counter: 0,
-          guardianName: item.guardianName,
-          tribalName: item.tribalName
-        });
+    this.fetchFifty();
+    this.interval = setInterval(() => this.fetchFifty(), 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  fetchFifty = () => {
+    const { counter, page, numRecords } = this.state;
+    if (counter === numRecords - 1) {
+      this.setState({
+        counter: 0,
+        page: 1
+      });
+    }
+    let pageData = [];
+    let tempCounter;
+    for (let i = counter; i < 55 * page; i++) {
+      if (i == numRecords - 1) {
+        break;
       } else {
-        this.setState(prevState =>({
-          counter: prevState.counter + 1,
-          guardianName: item.guardianName,
-          tribalName: item.tribalName
-        }));
+        pageData.push(this.props.data[i]);
+        tempCounter = i;
       }
-    }, 5000);
+    }
+    this.setState(prevState => ({
+      pageContent: pageData,
+      page: prevState.page + 1,
+      counter: tempCounter + 1
+    }));
+    return;
   }
 
   render() {
-    return(
+    const { pageContent } = this.state;
+    return (
       <div className='guardian-container'>
-        <div className='guardian'>
-          <div className='guardian-name'>{this.state.guardianName}</div>
-          {this.state.tribalName != '' ? <div className='tribal-name'>{this.state.tribalName}</div> : ''}
-        </div>
+        <div className="title"><h1>Tribal Guardians</h1></div>
+        {pageContent.map((guardian,index) => (
+          <div className='guardian' key={index}>
+            <div className='guardian-name'>{guardian.guardianName}</div>
+            {guardian.tribalName !== '' ? <div className='tribal-name'>{guardian.tribalName}</div> : ''}
+          </div>
+        ))}
       </div>
     );
   }
