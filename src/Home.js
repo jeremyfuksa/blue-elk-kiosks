@@ -53,7 +53,7 @@ class Home extends React.Component {
     const { pageContent } = this.state;
     return (
       <div className='guardian-container'>
-        <div className="title"><h1>Blue Elk Tribal Guardian Roll</h1></div>
+        <div className="title"><h1>Blue Elk Founder Tribal Guardians</h1></div>
         {pageContent.map((guardian,index) => (
           <div className='guardian' key={index}>
             <div className='guardian-name'>{guardian.guardianName}</div>
