@@ -7,9 +7,9 @@ class SlidesContainer extends React.Component {
     super(props);
     this.state = {
       photos: [
-        "http://localhost:3000/photos/test/photo01.jpg",
-        "http://localhost:3000/photos/test/photo02.jpg",
-        "http://localhost:3000/photos/test/photo03.jpg",
+        "photos/test/photo01.jpg",
+        "photos/test/photo02.jpg",
+        "photos/test/photo03.jpg",
       ]
     };
   }
