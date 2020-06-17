@@ -8,7 +8,8 @@
     "test": "razzle test --env=jsdom",
     "prestart:prod": "yarn build",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "create-json": "node ./scripts/create-json.js",
+    "csv-to-json": "node ./scripts/csv-to-json.js",
+    "compile-photos": "node ./scripts/dirTree.js ./public/photos",
     "heroku-postbuild": "yarn run build",
     "deploy": "git push heroku master"
   },
