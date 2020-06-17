@@ -35,6 +35,9 @@ class Roll extends React.Component {
         tempCounter = i;
       }
     }
+    this.setState({
+      pageContent: pageData
+    });
     if (counter === numRecords - 1) {
       this.setState({
         counter: 0,
@@ -42,7 +45,6 @@ class Roll extends React.Component {
       });
     } else {
       this.setState(prevState => ({
-        pageContent: pageData,
         page: prevState.page + 1,
         counter: tempCounter + 1
       }));
