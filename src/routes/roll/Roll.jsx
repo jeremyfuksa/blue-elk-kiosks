@@ -25,12 +25,6 @@ class Roll extends React.Component {
 
   fetchFifty = () => {
     const { counter, page, numRecords } = this.state;
-    if (counter === numRecords - 1) {
-      this.setState({
-        counter: 0,
-        page: 1
-      });
-    }
     let pageData = [];
     let tempCounter;
     for (let i = counter; i < 55 * page; i++) {
@@ -41,11 +35,18 @@ class Roll extends React.Component {
         tempCounter = i;
       }
     }
-    this.setState(prevState => ({
-      pageContent: pageData,
-      page: prevState.page + 1,
-      counter: tempCounter + 1
-    }));
+    if (counter === numRecords - 1) {
+      this.setState({
+        counter: 0,
+        page: 1
+      });
+    } else {
+      this.setState(prevState => ({
+        pageContent: pageData,
+        page: prevState.page + 1,
+        counter: tempCounter + 1
+      }));
+    }
     return;
   }
 
