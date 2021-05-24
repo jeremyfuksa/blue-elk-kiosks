@@ -19,6 +19,10 @@ class Slides extends React.Component {
     this.interval = setInterval(() => this.fetchPhoto(this.props.data), 3000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   fetchPhoto = (data) => {
     const { currentPhotoIndex, totalLength } = this.state;
     this.setState({

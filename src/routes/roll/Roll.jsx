@@ -16,7 +16,7 @@ class Roll extends React.Component {
 
   componentDidMount() {
     this.fetchFifty();
-    this.interval = setInterval(() => this.fetchFifty(), 10000);
+    this.interval = setInterval(() => this.fetchFifty(), 2000);
   }
 
   componentWillUnmount() {
