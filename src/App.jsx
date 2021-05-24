@@ -13,7 +13,7 @@ const App = () => (
   <Router history={history}>
       <Switch>
         <Route exact path='/' component={Menu} />
-        <Route path='/tribal-guardians' component={RollContainer} />
+        <Route path='/tribal-guardians/' component={RollContainer} />
         <Route path='/test-slides/' component={SlidesContainer} />
       </Switch>
   </Router>
