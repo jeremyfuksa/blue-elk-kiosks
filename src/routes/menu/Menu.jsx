@@ -22,7 +22,7 @@ const Menu = () => (
       </ul>
     </nav>
     <footer>
-      <p>Questions? Support? Contact the developer.<br/>Jeremy Fuksa • <Link to='mailto:hello@orangefla.me'>hello@orangefla.me</Link> • (816) 223-7565</p>
+      <p>Questions? Support? Contact the developer.<br/>Jeremy Fuksa • <Link to='mailto:advisor@scouting247.org'>advisor@scouting247.org</Link> • (816) 223-7565</p>
     </footer>
   </div>
 );

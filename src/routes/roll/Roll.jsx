@@ -7,7 +7,7 @@ class Roll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numRecords: this.props.data.size,
+      numRecords: this.props.data.length,
       pageContent: [],
       counter: 0,
       page: 1
@@ -15,40 +15,40 @@ class Roll extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchFifty();
-    this.interval = setInterval(() => this.fetchFifty(), 2000);
+    this.fetchNames();
+    this.interval = setInterval(() => this.fetchNames(), 10000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  fetchFifty = () => {
+  fetchNames = () => {
     const { counter, page, numRecords } = this.state;
     let pageData = [];
     let tempCounter;
     for (let i = counter; i < 55 * page; i++) {
-      if (i == numRecords - 1) {
-        break;
+      if (i >= numRecords) {
+        tempCounter = 0;
+        this.setState({
+          // pageContent: [],
+          counter: tempCounter,
+          page: 1
+        });
       } else {
         pageData.push(this.props.data[i]);
         tempCounter = i;
+        console.log(tempCounter);
       }
     }
     this.setState({
-      pageContent: pageData
+      pageContent: pageData,
+      counter: tempCounter
     });
-    if (counter === numRecords - 1) {
-      this.setState({
-        counter: 0,
-        page: 1
-      });
-    } else {
-      this.setState(prevState => ({
-        page: prevState.page + 1,
-        counter: tempCounter + 1
-      }));
-    }
+    this.setState(prevState => ({
+      page: prevState.page + 1,
+      counter: tempCounter + 1
+    }));
     return;
   }
 
