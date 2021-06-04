@@ -27,9 +27,9 @@ const Menu = () => (
         </li>
       </ul>
     </nav>
-    <footer>
+    {/* <footer>
       <p>Questions? Support? Contact the developer.<br/>Jeremy Fuksa • <Link to='mailto:advisor@scouting247.org'>advisor@scouting247.org</Link> • (816) 223-7565</p>
-    </footer>
+    </footer> */}
   </div>
 );
 
