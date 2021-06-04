@@ -16,7 +16,7 @@ class Slides extends React.Component {
   componentDidMount() {
     console.log(this.props.data);
     this.fetchPhoto(this.props.data);
-    this.interval = setInterval(() => this.fetchPhoto(this.props.data), 3000);
+    this.interval = setInterval(() => this.fetchPhoto(this.props.data), 10000);
   }
 
   componentWillUnmount() {
@@ -39,7 +39,7 @@ class Slides extends React.Component {
 
   render () {
     return (
-      <div>
+      <div cx='black-background'>
         <div cx='photo-container' style={{ backgroundImage: `url(${this.state.currentPhotoPath})` }}></div>
       </div>
     );

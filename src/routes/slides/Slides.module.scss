@@ -1,3 +1,16 @@
+@keyframes fader {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  90% {
+    opacity: 0;
+    transform: scale(1.125);
+  }
+  100% { opacity: 0; }
+}
 .slides {
   margin: 0;
   padding: 0;
@@ -5,12 +18,17 @@
   color: white;
 }
 
+.black-background { background-color: black; }
+
 :local {
   .photo-container {
     width: 100vw;
     height: 100vh;
+    animation: 10s ease-out fader;
+    animation-iteration-count: infinite;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    background-color: black;
   }
 }

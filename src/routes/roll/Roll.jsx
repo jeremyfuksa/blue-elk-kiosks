@@ -55,9 +55,9 @@ class Roll extends React.Component {
   render() {
     const { pageContent } = this.state;
     return (
-      <div cx='kiosk-background'>
+      <div cx={this.props.background}>
         <div cx='guardian-container'>
-          <div cx='title'><h1>Blue Elk Tribal Guardian Roll</h1></div>
+          <div cx='title'><h1>{this.props.title}</h1></div>
           {pageContent.map((guardian) => (
             <div cx='guardian' key={guardian.guardianName}>
               <div cx='guardian-name'>{guardian.guardianName}</div>

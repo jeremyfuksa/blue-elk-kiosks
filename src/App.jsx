@@ -13,8 +13,40 @@ const App = () => (
   <Router history={history}>
       <Switch>
         <Route exact path='/' component={Menu} />
-        <Route path='/tribal-guardians/' component={RollContainer} />
-        <Route path='/test-slides/' component={SlidesContainer} />
+        <Route
+          path='/tribal-guardians/'
+          render={(props) => (
+            <RollContainer
+              {...props}
+              title='Blue Elk Tribal Guardian Roll'
+              background='red-background'
+              jsonUrl='../../data/tribalGuardians.json'
+            />
+          )}
+        />
+        <Route
+          path='/lifetime-guardians/'
+          render={(props) => (
+            <RollContainer
+              {...props}
+              title='Lifetime Tribal Guardian Roll'
+              background='yellow-background'
+              jsonUrl='../../data/tribalGuardians.json'
+            />
+          )}
+        />
+        <Route
+          path='/elevations/'
+          render={(props) => (
+            <RollContainer
+              {...props}
+              title='Session Elevations'
+              background='blue-background'
+              jsonUrl='../../data/tribalGuardians.json'
+            />
+          )}
+        />
+        <Route path='/photo-slide-show/' component={SlidesContainer} />
       </Switch>
   </Router>
 );

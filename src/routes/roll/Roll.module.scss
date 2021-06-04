@@ -17,8 +17,19 @@ body {
   padding: 0;
 }
 
-.kiosk-background {
-  background: radial-gradient(ellipse at center, #ca3c20 40%,#6b2010 100%);
+.red-background {
+  background: radial-gradient(ellipse at center, #ca3c20 40%,#4d1004 100%);
+  color: white;
+}
+
+.blue-background {
+  background: radial-gradient(ellipse at center, #253d8a 40%,#0f1a40 100%);
+  color: white;
+}
+
+.yellow-background {
+  background: radial-gradient(ellipse at center, #fee90b 40%,#AD7200 100%);
+  color: #1A1100;
 }
 
 .guardian-container {
@@ -34,7 +45,6 @@ body {
   background-size: 100%;
   font-family: 'Cinzel', serif;
   font-size: 16px;
-  color: white;
   text-transform: lowercase;
   .title {
     width: 100vw;

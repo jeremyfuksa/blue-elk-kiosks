@@ -9,7 +9,7 @@ const Menu = () => (
   <div cx='main-menu'>
     <header>
       <img src={logo} alt='logo' />
-      <h1>Kiosk Main Menu</h1>
+      <h1>TV Main Menu</h1>
     </header>
     <nav>
       <ul>
@@ -17,7 +17,13 @@ const Menu = () => (
           <Link to='/tribal-guardians'>Blue Elk Tribal Guardian Roll</Link>
         </li>
         <li>
-          <Link to='/test-slides'>Test Slide Show</Link>
+          <Link to='/lifetime-guardians'>Lifetime Tribal Guardian Roll</Link>
+        </li>
+        <li>
+          <Link to='/elevations'>Session Elevations</Link>
+        </li>
+        <li>
+          <Link to='/photo-slide-show'>Photo Slide Show</Link>
         </li>
       </ul>
     </nav>

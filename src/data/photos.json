@@ -1,18 +1,1 @@
-{
-  "path": "./public/photos",
-  "name": "photos",
-  "children": [{
-    "path": "./public/photos/test",
-    "name": "test",
-    "children": [{
-      "path": "./public/photos/test/photo01.jpg",
-      "name": "photo01.jpg"
-    }, {
-      "path": "./public/photos/test/photo02.jpg",
-      "name": "photo02.jpg"
-    }, {
-      "path": "./public/photos/test/photo03.jpg",
-      "name": "photo03.jpg"
-    }]
-  }]
-}
+{"path":"./public/photos","name":"photos","children":[{"path":"./public/photos/test","name":"test","children":[{"path":"./public/photos/test/photo01.jpg","name":"photo01.jpg"},{"path":"./public/photos/test/photo02.jpg","name":"photo02.jpg"},{"path":"./public/photos/test/photo03.jpg","name":"photo03.jpg"}]}]}
