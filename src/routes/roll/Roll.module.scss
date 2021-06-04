@@ -12,9 +12,12 @@
   100% { opacity: 0; }
 }
 
-.roll {
+body {
   margin: 0;
   padding: 0;
+}
+
+.kiosk-background {
   background: radial-gradient(ellipse at center, #ca3c20 40%,#6b2010 100%);
 }
 
