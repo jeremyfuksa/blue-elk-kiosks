@@ -25,13 +25,35 @@ const App = () => (
           )}
         />
         <Route
+          path='/lonebear-guardians/'
+          render={(props) => (
+            <RollContainer
+              {...props}
+              title='Lone Bear Guardian Roll'
+              background='yellow-background'
+              jsonUrl='http://localhost:5050/api/public/lonebearGuardians'
+            />
+          )}
+        />
+        <Route
+          path='/sheshebe-guardians/'
+          render={(props) => (
+            <RollContainer
+              {...props}
+              title='She-She-Be Guardian Roll'
+              background='yellow-background'
+              jsonUrl='http://localhost:5050/api/public/sheshebeGuardians'
+            />
+          )}
+        />
+        <Route
           path='/lifetime-guardians/'
           render={(props) => (
             <RollContainer
               {...props}
-              title='Lifetime Tribal Guardian Roll'
+              title='Lifetime Guardian Roll'
               background='yellow-background'
-              jsonUrl='../../data/tribalGuardians.json'
+              jsonUrl='http://localhost:5050/api/public/lifetimeGuardians'
             />
           )}
         />
@@ -42,7 +64,7 @@ const App = () => (
               {...props}
               title='Session Elevations'
               background='blue-background'
-              jsonUrl='../../data/tribalGuardians.json'
+              jsonUrl='http://localhost:5050/api/public/sessionElevations'
             />
           )}
         />

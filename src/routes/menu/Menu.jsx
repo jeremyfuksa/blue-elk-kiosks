@@ -17,14 +17,20 @@ const Menu = () => (
           <Link to='/tribal-guardians'>Blue Elk Tribal Guardian Roll</Link>
         </li>
         <li>
-          <Link to='/lifetime-guardians'>Lifetime Tribal Guardian Roll</Link>
+          <Link to='/lonebear-guardians'>Lone Bear Guardian Roll</Link>
         </li>
         <li>
-          <Link to='/elevations'>Session Elevations</Link>
+          <Link to='/sheshebe-guardians'>She-She-Be Guardian Roll</Link>
         </li>
         <li>
+          <Link to='/lifetime-guardians'>Lifetime Guardian Roll</Link>
+        </li>
+        <li>
+          <Link to='/elevations'>Session Elevations Roll</Link>
+        </li>
+        {/* <li>
           <Link to='/photo-slide-show'>Photo Slide Show</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
     {/* <footer>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import getReactWithCX from 'react-cx';
 import styles from './Roll.module.scss';
 
@@ -7,7 +8,7 @@ class Roll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numRecords: this.props.data.length,
+      numRecords: 0,
       pageContent: [],
       counter: 0,
       page: 1
@@ -15,8 +16,15 @@ class Roll extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchNames();
-    this.interval = setInterval(() => this.fetchNames(), 10000);
+    axios.get(this.props.jsonUrl)
+    .then (function(response){
+      this.setState({numRecords: response.data.length});
+      this.fetchNames(response.data);
+      this.interval = setInterval(() => this.fetchNames(response.data), 10000);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 
   componentWillUnmount() {
@@ -59,9 +67,9 @@ class Roll extends React.Component {
         <div cx='guardian-container'>
           <div cx='title'><h1>{this.props.title}</h1></div>
           {pageContent.map((guardian) => (
-            <div cx='guardian' key={guardian.guardianName}>
-              <div cx='guardian-name'>{guardian.guardianName}</div>
-              {guardian.tribalName !== '' ? <div cx='tribal-name'>{guardian.tribalName}</div> : ''}
+            <div cx='guardian' key={guardian.Full_Name}>
+              <div cx='guardian-name'>{guardian.Full_Name}</div>
+              {guardian.tribalName !== '' ? <div cx='tribal-name'>{`${guardian.Responsibility_Display} ${guardian.Tribal_Name}`}</div> : ''}
             </div>
           ))}
         </div>

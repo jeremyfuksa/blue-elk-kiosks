@@ -66,13 +66,13 @@ body {
   height: 5vh;
   text-align: center;
 }
-.guardian-name {
-  font-size: 1rem; 
-  font-weight: 700;
-}
-.reset { opacity: 0; }
+.guardian-name,
 .tribal-name {
-  margin: auto;
-  width: 60%;
-  font-size: 0.6rem;
+  font-smooth: always;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: lowercase;
 }
+.guardian-name { font-size: 1rem; }
+.reset { opacity: 0; }
+.tribal-name { font-size: 0.6rem; }
