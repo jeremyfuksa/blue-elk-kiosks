@@ -18,9 +18,10 @@ class Roll extends React.Component {
   componentDidMount() {
     axios.get(this.props.jsonUrl)
     .then (function(response){
-      this.setState({numRecords: response.data.length});
-      this.fetchNames(response.data);
-      this.interval = setInterval(() => this.fetchNames(response.data), 10000);
+      const data = response.data;
+      this.setState({numRecords: data.length});
+      this.fetchNames(data);
+      this.interval = setInterval(() => this.fetchNames(data), 10000);
     })
     .catch(function(error) {
       console.log(error);
@@ -31,7 +32,7 @@ class Roll extends React.Component {
     clearInterval(this.interval);
   }
 
-  fetchNames = () => {
+  fetchNames = (data) => {
     const { counter, page, numRecords } = this.state;
     let pageData = [];
     let tempCounter;
@@ -44,9 +45,8 @@ class Roll extends React.Component {
           page: 1
         });
       } else {
-        pageData.push(this.props.data[i]);
+        pageData.push(data[i]);
         tempCounter = i;
-        console.log(tempCounter);
       }
     }
     this.setState({
