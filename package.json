@@ -10,10 +10,10 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "csv-to-json": "node ./scripts/csv-to-json.js",
     "compile-photos": "node ./scripts/dirTree.js ./public/photos",
-    "heroku-postbuild": "yarn run build",
-    "deploy": "git push heroku master"
+    "server:start": "SET PORT=5005&&SET HOST=172.17.184.122&&SET PUBLIC_PATH='172.17.184.122:5005/'&&razzle start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "razzle": "^3.0.0",
     "razzle-heroku": "^3.0.0",
@@ -30,8 +30,8 @@
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "postcss-normalize": "^9.0.0",
-    "sass-loader": "^12.0.0",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0"
+    "sass-loader": "^12.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^4.7.2"
   }
 }

@@ -20,7 +20,7 @@ const App = () => (
               {...props}
               title='Blue Elk Tribal Guardian Roll'
               background='red-background'
-              jsonUrl='../../data/tribalGuardians.json'
+              jsonUrl='http://localhost:5050/api/public/founderGuardians'
             />
           )}
         />
