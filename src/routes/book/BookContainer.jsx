@@ -1,20 +1,19 @@
 import React from 'react';
-import Roll from './Roll';
+import Book from './Book';
 
-class RollContainer extends React.Component {
+class BookContainer extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  render () {
     return(
-      <Roll
+      <Book
         jsonUrl={this.props.jsonUrl}
         title={this.props.title}
-        background={this.props.background}
       />
     );
   }
 }
 
-export default RollContainer;
+export default BookContainer;

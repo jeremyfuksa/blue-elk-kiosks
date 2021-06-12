@@ -16,12 +16,15 @@ class Roll extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.jsonUrl);
+    const self = this;
     axios.get(this.props.jsonUrl)
     .then (function(response){
-      const data = response.data;
-      this.setState({numRecords: data.length});
-      this.fetchNames(data);
-      this.interval = setInterval(() => this.fetchNames(data), 10000);
+      const data = response.data.data;
+      console.log(data);
+      self.setState({numRecords: data.length});
+      self.fetchNames(data);
+      self.interval = setInterval(() => self.fetchNames(data), 10000);
     })
     .catch(function(error) {
       console.log(error);
@@ -40,7 +43,6 @@ class Roll extends React.Component {
       if (i >= numRecords) {
         tempCounter = 0;
         this.setState({
-          // pageContent: [],
           counter: tempCounter,
           page: 1
         });
@@ -65,11 +67,13 @@ class Roll extends React.Component {
     return (
       <div cx={this.props.background}>
         <div cx='guardian-container'>
-          <div cx='title'><h1>{this.props.title}</h1></div>
+          <div cx='title'>
+            <h1>{this.props.title}</h1>
+          </div>
           {pageContent.map((guardian) => (
             <div cx='guardian' key={guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}>
               <div cx='guardian-name'>{guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}</div>
-              {guardian.tribalName !== '' ? <div cx='tribal-name'>{`${guardian.Responsibility_Display} ${guardian.Tribal_Name}`}</div> : ''}
+              {guardian.Responsibility_Display ? <div cx='tribal-name'>{`${guardian.Responsibility_Display} ${guardian.Tribal_Name}`}</div> : ''}
             </div>
           ))}
         </div>

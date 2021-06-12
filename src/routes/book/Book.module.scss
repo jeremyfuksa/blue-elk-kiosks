@@ -1,0 +1,116 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% { opacity: 1; }
+  90% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bom-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background-image: url('../../bkgd-bom.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  font-size: 16px;
+  font-smooth: always;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bom-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 85%;
+  height: 85vh;
+  border: 2px solid white;
+  .memory {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    .title-container {
+      position: relative;
+      top: -28px;
+      margin: 0 auto;
+      width: 80%;
+      font-family: 'Cinzel', serif;
+      background-color: #2d313d;
+      padding: 0.25rem;
+      border: 2px solid white;
+      .title {
+        // animation: 15s ease-out fadeInOut;
+        // animation-iteration-count: infinite;
+      }
+      h1 {
+        width: 100%;
+        font-size: 2rem;
+        text-align: center;
+        text-transform: lowercase;
+        margin: 0 auto;
+      }
+    }
+    .centered-content {
+      // animation: 15s ease-out fadeInOut;
+      // animation-iteration-count: infinite;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      height: 100%;
+    }
+    .memory_body,
+    .author {
+      font-size: 1.2rem;
+    }
+    .memory_body {
+      // truncate to 1020 char
+      max-height: 360px;
+      overflow: hidden;
+      padding: 1rem 4rem 2rem;
+      font-size: 1.4rem;
+      line-height: 1.625;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      font-weight: 300;
+      background-image: linear-gradient(white 0%,rgba(0,0,0,0));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .author {
+      padding: 0 4rem;
+      font-family: 'Cinzel', serif;
+      text-transform: lowercase;
+      text-align: right;
+    }
+    .mentor {
+      padding: 0 4rem;
+      font-family: 'Cinzel', serif;
+      text-transform: lowercase;
+      font-size: 1.6rem;
+    }
+  }
+  footer {
+    //8162898992
+    margin-bottom: auto;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    .mos-logo {
+      max-width: 72px;
+      height: auto;
+    }
+  }
+}

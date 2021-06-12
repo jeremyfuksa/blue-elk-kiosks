@@ -1,6 +1,6 @@
 import getReactWithCX from 'react-cx';
 import { Link } from 'react-router-dom';
-import logo from './micosay-logo-color.svg';
+import logo from '../../micosay-logo-color.svg';
 import styles from './Menu.module.scss';
 
 const React = getReactWithCX(styles);
@@ -14,7 +14,7 @@ const Menu = () => (
     <nav>
       <ul>
         <li>
-          <Link to='/tribal-guardians'>Blue Elk Tribal Guardian Roll</Link>
+          <Link to='/tribal-guardians'>Founder Guardian Roll</Link>
         </li>
         <li>
           <Link to='/lonebear-guardians'>Lone Bear Guardian Roll</Link>
@@ -24,6 +24,9 @@ const Menu = () => (
         </li>
         <li>
           <Link to='/lifetime-guardians'>Lifetime Guardian Roll</Link>
+        </li>
+        <li>
+          <Link to='/book-of-memories'>Book of Memories</Link>
         </li>
         <li>
           <Link to='/elevations'>Session Elevations Roll</Link>

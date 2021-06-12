@@ -7,8 +7,11 @@ import {
 import { createMemoryHistory } from 'history';
 import Menu from './routes/menu/Menu';
 import RollContainer from './routes/roll/RollContainer';
+import BookContainer from './routes/book/BookContainer';
 import SlidesContainer from './routes/slides/SlidesContainer';
 const history = createMemoryHistory();
+const { RAZZLE_DATA_SRC } = process.env;
+const apiSource = 'http://' + RAZZLE_DATA_SRC + ':5050/api/public/';
 const App = () => (
   <Router history={history}>
       <Switch>
@@ -18,9 +21,9 @@ const App = () => (
           render={(props) => (
             <RollContainer
               {...props}
-              title='Blue Elk Tribal Guardian Roll'
+              title='Founder Guardian Roll'
               background='red-background'
-              jsonUrl='http://localhost:5050/api/public/founderGuardians'
+              jsonUrl={`${apiSource}founderGuardians`}
             />
           )}
         />
@@ -31,7 +34,7 @@ const App = () => (
               {...props}
               title='Lone Bear Guardian Roll'
               background='yellow-background'
-              jsonUrl='http://localhost:5050/api/public/lonebearGuardians'
+              jsonUrl={`${apiSource}lonebearGuardians`}
             />
           )}
         />
@@ -42,7 +45,7 @@ const App = () => (
               {...props}
               title='She-She-Be Guardian Roll'
               background='yellow-background'
-              jsonUrl='http://localhost:5050/api/public/sheshebeGuardians'
+              jsonUrl={`${apiSource}sheshebeGuardians`}
             />
           )}
         />
@@ -53,7 +56,17 @@ const App = () => (
               {...props}
               title='Lifetime Guardian Roll'
               background='yellow-background'
-              jsonUrl='http://localhost:5050/api/public/lifetimeGuardians'
+              jsonUrl={`${apiSource}lifetimeGuardians`}
+            />
+          )}
+        />
+        <Route
+          path='/book-of-memories/'
+          render={(props) => (
+            <BookContainer
+              {...props}
+              title='Book Of Memories'
+              jsonUrl={`${apiSource}getMemories`}
             />
           )}
         />
@@ -64,7 +77,7 @@ const App = () => (
               {...props}
               title='Session Elevations'
               background='blue-background'
-              jsonUrl='http://localhost:5050/api/public/sessionElevations'
+              jsonUrl={`${apiSource}sessionElevations`}
             />
           )}
         />
