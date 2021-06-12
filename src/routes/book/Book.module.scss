@@ -2,11 +2,11 @@
   0% {
     opacity: 0;
   }
-  25% {
+  5% {
     opacity: 1;
   }
-  75% { opacity: 1; }
-  90% { opacity: 0; }
+  95% { opacity: 1; }
+  99% { opacity: 0; }
   100% { opacity: 0; }
 }
 
@@ -43,6 +43,7 @@ body {
     display: flex;
     flex-flow: column;
     height: 100%;
+    contain: layout inline-size;
     .title-container {
       position: relative;
       top: -28px;
@@ -53,8 +54,8 @@ body {
       padding: 0.25rem;
       border: 2px solid white;
       .title {
-        // animation: 15s ease-out fadeInOut;
-        // animation-iteration-count: infinite;
+        animation: 45s ease-out fadeInOut;
+        animation-iteration-count: infinite;
       }
       h1 {
         width: 100%;
@@ -65,12 +66,17 @@ body {
       }
     }
     .centered-content {
-      // animation: 15s ease-out fadeInOut;
-      // animation-iteration-count: infinite;
+      animation: 45s ease-out fadeInOut;
+      animation-iteration-count: infinite;
       display: flex;
       flex-flow: column;
       justify-content: center;
       height: 100%;
+    }
+    @container (min-height: 360px) {
+      .memory_body {
+        color: fuchsia;
+      }
     }
     .memory_body,
     .author {
@@ -78,16 +84,16 @@ body {
     }
     .memory_body {
       // truncate to 1020 char
-      max-height: 360px;
-      overflow: hidden;
+      // max-height: 360px;
+      // overflow: hidden;
       padding: 1rem 4rem 2rem;
       font-size: 1.4rem;
       line-height: 1.625;
       font-family: 'Roboto', Arial, Helvetica, sans-serif;
       font-weight: 300;
-      background-image: linear-gradient(white 0%,rgba(0,0,0,0));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      // background-image: linear-gradient(white 0%,rgba(0,0,0,0));
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
     }
     .author {
       padding: 0 4rem;
@@ -103,7 +109,6 @@ body {
     }
   }
   footer {
-    //8162898992
     margin-bottom: auto;
     text-align: center;
     position: relative;

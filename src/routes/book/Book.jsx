@@ -8,11 +8,13 @@ const React = getReactWithCX(styles);
 class Book extends React.Component {
   constructor(props) {
     super(props);
+    this.contentRef = React.createRef();
     this.state = {
       numRecords: 0,
       pageContent: [],
       counter: 0,
-      page: 1
+      page: 1,
+      height: 0
     };
   }
 
@@ -21,11 +23,10 @@ class Book extends React.Component {
     axios.get(this.props.jsonUrl)
     .then(function(response) {
       const data = response.data.data;
-      console.log(data);
-      self.setState({numRecords: data.length});
-      console.log(data.length);
-      self.fetchMemory(data);
-      self.interval = setInterval(() => self.fetchMemory(data), 1000);
+      const filteredData = data.filter((memory) => memory.MemoryStatusCd.includes('A'));
+      self.setState({numRecords: filteredData.length});
+      self.fetchMemory(filteredData);
+      self.interval = setInterval(() => self.fetchMemory(filteredData), 45000);
     })
     .catch(function(error) {
       console.log(error);
@@ -41,13 +42,14 @@ class Book extends React.Component {
     let pageData = [];
     let tempCounter;
     for (let i = counter; i < page; i++) {
-      console.log(page);
-      if (i >= page) {
+      if(i == (numRecords - 1)) {
+        console.log('Last Memory');
         tempCounter = 0;
         this.setState({
           counter: tempCounter,
           page: 1
         });
+        return;
       } else {
         pageData.push(data[i]);
         tempCounter = i;
@@ -76,12 +78,12 @@ class Book extends React.Component {
                   <h1>{memory.Subject}</h1>
                 </div>
               </div>
-              <div cx='centered-content'>
+              <div cx='centered-content' ref={this.contentRef}>
                 <div cx='mentor'>
                   Memory of {memory.FirstName} {memory.LastName}
                 </div>
                 <div cx='memory_body'>
-                  {memory.MemoryText}
+                  {memory.MemoryText.length > 1800 ? memory.MemoryText.substring(0,1799) + '...' : memory.MemoryText}
                 </div>
                 <div cx='author'>&mdash; {memory.SubmitterFirstName} {memory.SubmitterLastName}</div>
               </div>
