@@ -24,6 +24,7 @@ class Book extends React.Component {
     .then(function(response) {
       const data = response.data.data;
       const filteredData = data.filter((memory) => memory.MemoryStatusCd.includes('A'));
+      console.log(filteredData);
       self.setState({numRecords: filteredData.length});
       self.fetchMemory(filteredData);
       self.interval = setInterval(() => self.fetchMemory(filteredData), 45000);
@@ -51,7 +52,7 @@ class Book extends React.Component {
         });
         return;
       } else {
-        pageData.push(data[i]);
+        pageData.push(data[7]);
         tempCounter = i;
       }
     }
@@ -83,7 +84,7 @@ class Book extends React.Component {
                   Memory of {memory.FirstName} {memory.LastName}
                 </div>
                 <div cx='memory_body'>
-                  {memory.MemoryText.length > 1800 ? memory.MemoryText.substring(0,1799) + '...' : memory.MemoryText}
+                  {memory.MemoryText.length > 1340 ? memory.MemoryText.substring(0,1339) + '...' : memory.MemoryText}
                 </div>
                 <div cx='author'>&mdash; {memory.SubmitterFirstName} {memory.SubmitterLastName}</div>
               </div>

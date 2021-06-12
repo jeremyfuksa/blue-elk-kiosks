@@ -40,7 +40,7 @@ class Roll extends React.Component {
     const { counter, page, numRecords } = this.state;
     let pageData = [];
     let tempCounter;
-    for (let i = counter; i < 50 * page; i++) {
+    for (let i = counter; i < 45 * page; i++) {
       if (i >= numRecords) {
         tempCounter = 0;
         this.setState({
