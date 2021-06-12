@@ -36,7 +36,6 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  // align-content: center;
   width: 100%;
   height: 100vh;
   background-image: url('../../micosay-logo-white.svg');
@@ -60,19 +59,26 @@ body {
   }
 }
 .guardian {
-  animation: 10s ease-out fader;
-  animation-iteration-count: infinite;
-  width: 18vw;
-  height: 5vh;
   text-align: center;
-}
-.guardian-name,
-.tribal-name {
   font-smooth: always;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: lowercase;
 }
-.guardian-name { font-size: 1rem; }
+.longList {
+  animation: 10s ease-out fader;
+  animation-iteration-count: infinite;
+  width: 18vw;
+  height: 5vh;
+  .guardian-name { font-size: 1rem; }
+  .tribal-name { font-size: 0.6rem; }
+}
 .reset { opacity: 0; }
-.tribal-name { font-size: 0.6rem; }
+.shortList {
+  animation: 60s ease-out fader;
+  animation-iteration-count: infinite;
+  width: 22vw;
+  height: 5vh;
+  .guardian-name { font-size: 1.5rem; }
+  .tribal-name { font-size: 1.2rem; }
+}

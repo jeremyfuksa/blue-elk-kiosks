@@ -21,10 +21,11 @@ class Roll extends React.Component {
     axios.get(this.props.jsonUrl)
     .then (function(response){
       const data = response.data.data;
+      const dynamicInterval = data.length > 50 ? 10000 : 60000;
       console.log(data);
       self.setState({numRecords: data.length});
       self.fetchNames(data);
-      self.interval = setInterval(() => self.fetchNames(data), 10000);
+      self.interval = setInterval(() => self.fetchNames(data), dynamicInterval);
     })
     .catch(function(error) {
       console.log(error);
@@ -71,7 +72,7 @@ class Roll extends React.Component {
             <h1>{this.props.title}</h1>
           </div>
           {pageContent.map((guardian) => (
-            <div cx='guardian' key={guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}>
+            <div cx={['guardian', this.state.numRecords > 50 ? 'longList' : 'shortList']} key={guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}>
               <div cx='guardian-name'>{guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}</div>
               {guardian.Responsibility_Display ? <div cx='tribal-name'>{`${guardian.Responsibility_Display} ${guardian.Tribal_Name}`}</div> : ''}
             </div>
