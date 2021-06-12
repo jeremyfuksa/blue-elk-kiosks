@@ -52,7 +52,7 @@ class Book extends React.Component {
         });
         return;
       } else {
-        pageData.push(data[7]);
+        pageData.push(data[i]);
         tempCounter = i;
       }
     }
