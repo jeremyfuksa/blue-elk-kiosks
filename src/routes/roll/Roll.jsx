@@ -72,7 +72,7 @@ class Roll extends React.Component {
             <h1>{this.props.title}</h1>
           </div>
           {pageContent.map((guardian) => (
-            <div cx={['guardian', this.state.numRecords > 50 ? 'longList' : 'shortList']} key={guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}>
+            <div cx={['guardian', this.state.numRecords > 50 ? 'longList' : 'shortList']} key={`${guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}_${guardian.Responsibility_Display}`}>
               <div cx='guardian-name'>{guardian.Full_Name ? guardian.Full_Name : guardian.Guardian_Display_Name}</div>
               {guardian.Responsibility_Display ? <div cx='tribal-name'>{`${guardian.Responsibility_Display} ${guardian.Tribal_Name}`}</div> : ''}
             </div>
