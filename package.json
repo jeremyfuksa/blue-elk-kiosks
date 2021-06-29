@@ -28,7 +28,7 @@
   "devDependencies": {
     "csvjson": "^5.1.0",
     "json-loader": "^0.5.7",
-    "mini-css-extract-plugin": "^1.6.0",
+    "mini-css-extract-plugin": "^1.6.2",
     "node-sass": "^6.0.0",
     "postcss-normalize": "^9.0.0",
     "sass-loader": "^12.1.0",
