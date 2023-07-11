@@ -20,7 +20,7 @@ const Menu = () => (
         <h2>Guardian Rolls</h2>
         <ul>
           <li>
-            <Link to='/tribal-guardians'>Founder Guardian Roll</Link>
+            <Link to='/founder-guardians'>Founder Guardian Roll</Link>
           </li>
           <li>
             <Link to='/lonebear-guardians'>Lone Bear Guardian Roll</Link>

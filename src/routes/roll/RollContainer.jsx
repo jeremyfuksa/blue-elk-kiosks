@@ -10,6 +10,7 @@ class RollContainer extends React.Component {
     return(
       <Roll
         jsonUrl={this.props.jsonUrl}
+        jsonSrc={this.props.jsonSrc}
         title={this.props.title}
         background={this.props.background}
       />

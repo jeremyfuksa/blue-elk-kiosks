@@ -11,19 +11,24 @@ import BookContainer from './routes/book/BookContainer';
 import SlidesContainer from './routes/slides/SlidesContainer';
 const history = createMemoryHistory();
 const { RAZZLE_DATA_SRC } = process.env;
-const apiSource = 'http://' + RAZZLE_DATA_SRC + ':5050/api/public/';
+const j = 'bartle';
+let apiSource = '';
+if ( j === 'bartle') {
+  apiSource = 'http://' + RAZZLE_DATA_SRC + ':5050/api/public/';
+}
 const App = () => (
   <Router history={history}>
       <Switch>
         <Route exact path='/' component={Menu} />
         <Route
-          path='/tribal-guardians/'
+          path='/founder-guardians/'
           render={(props) => (
             <RollContainer
               {...props}
               title='Founder Guardian Roll'
               background='red-background'
               jsonUrl={`${apiSource}founderGuardians`}
+              jsonSrc={j}
             />
           )}
         />
@@ -35,6 +40,7 @@ const App = () => (
               title='Lone Bear Guardian Roll'
               background='yellow-background'
               jsonUrl={`${apiSource}lonebearGuardians`}
+              jsonSrc={j}
             />
           )}
         />
@@ -46,6 +52,7 @@ const App = () => (
               title='She-She-Be Guardian Roll'
               background='yellow-background'
               jsonUrl={`${apiSource}sheshebeGuardians`}
+              jsonSrc={j}
             />
           )}
         />
@@ -57,6 +64,7 @@ const App = () => (
               title='Lifetime Guardian Roll'
               background='yellow-background'
               jsonUrl={`${apiSource}lifetimeGuardians`}
+              jsonSrc={j}
             />
           )}
         />
@@ -78,6 +86,7 @@ const App = () => (
               title='Session Elevations'
               background='blue-background'
               jsonUrl={`${apiSource}sessionElevations`}
+              jsonSrc={j}
             />
           )}
         />
