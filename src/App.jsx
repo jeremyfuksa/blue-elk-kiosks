@@ -11,7 +11,13 @@ import BookContainer from './routes/book/BookContainer';
 import SlidesContainer from './routes/slides/SlidesContainer';
 const history = createMemoryHistory();
 const { RAZZLE_DATA_SRC } = process.env;
+
+// dev/production flag
+// set to 'dev' if you want to use the local JSON data
+// as your source. Set to 'bartle' to use the
+// Blue Elk server as your data source.
 const j = 'bartle';
+
 let apiSource = '';
 if ( j === 'bartle') {
   apiSource = 'http://' + RAZZLE_DATA_SRC + ':5050/api/public/';

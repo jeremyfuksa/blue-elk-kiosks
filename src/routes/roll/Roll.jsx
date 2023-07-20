@@ -22,10 +22,11 @@ class Roll extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.jsonUrl);
+    console.log('jsonUrl: ' + this.props.jsonUrl);
+    console.log('jsonSrc: ' + this.props.jsonSrc);
     const self = this;
     let data;
-    if (this.props.jsonSrc == 'dev') {
+    if (this.props.jsonSrc === 'dev') {
       switch(this.props.jsonUrl) {
         case 'founderGuardians':
           data = founderGuardians;
@@ -50,7 +51,7 @@ class Roll extends React.Component {
       });
     }
     const dynamicInterval = data.length > 50 ? 10000 : 60000;
-    console.log(data);
+    // console.log('data: ' + data);
     self.setState({numRecords: data.length});
     self.interval = setInterval(() => self.fetchNames(data), dynamicInterval);
   }
