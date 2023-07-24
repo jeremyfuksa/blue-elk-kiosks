@@ -25,9 +25,28 @@ class Roll extends React.Component {
     console.log('jsonUrl: ' + this.props.jsonUrl);
     console.log('jsonSrc: ' + this.props.jsonSrc);
     const self = this;
-    let data;
-    if (this.props.jsonSrc === 'dev') {
-      switch(this.props.jsonUrl) {
+    this.fetchData()
+      .then((data) => {
+        const dynamicInterval = data.length > 50 ? 10000 : 60000;
+        self.setState({ numRecords: data.length });
+        self.interval = setInterval(() => self.fetchNames(data), dynamicInterval);
+      })
+      .catch(this.failureCallback);
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  
+  failureCallback = (error) => {
+    console.log(`Error fetching data: ${error}`);
+  };
+  
+  fetchData = () => {
+    const { jsonSrc, jsonUrl } = this.props;
+    if (jsonSrc === 'dev') {
+      let data;
+      switch (jsonUrl) {
         case 'founderGuardians':
           data = founderGuardians;
           break;
@@ -40,31 +59,23 @@ class Roll extends React.Component {
         case 'sheshebeGuardians':
           data = sheshebeGuardians;
           break;
+        default:
+          data = [];
       }
+      return Promise.resolve(data);
     } else {
-      axios.get(this.props.jsonUrl)
-      .then (function(response){
-        data = response.data.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      return axios
+        .get(jsonUrl)
+        .then((response) => response.data.data)
+        .catch(this.failureCallback);
     }
-    const dynamicInterval = data.length > 50 ? 10000 : 60000;
-    // console.log('data: ' + data);
-    self.setState({numRecords: data.length});
-    self.interval = setInterval(() => self.fetchNames(data), dynamicInterval);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
+  };
+  
   fetchNames = (data) => {
     const { counter, page, numRecords } = this.state;
     let pageData = [];
     let tempCounter;
-    for (let i = counter; i < (40 * page); i++) {
+    for (let i = counter; i < 40 * page; i++) {
       if (i >= numRecords) {
         tempCounter = 0;
         this.setState({
@@ -80,13 +91,13 @@ class Roll extends React.Component {
       pageContent: pageData,
       counter: tempCounter
     });
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       page: prevState.page + 1,
       counter: tempCounter + 1
     }));
     return;
-  }
-
+  };
+  
   render() {
     const { pageContent } = this.state;
     return (

@@ -16,7 +16,7 @@ const { RAZZLE_DATA_SRC } = process.env;
 // set to 'dev' if you want to use the local JSON data
 // as your source. Set to 'bartle' to use the
 // Blue Elk server as your data source.
-const j = 'bartle';
+const j = 'dev';
 
 let apiSource = '';
 if ( j === 'bartle') {
