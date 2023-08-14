@@ -1,34 +1,34 @@
 import React from 'react';
+import ReactDOM from "react-dom/client";
 import {
+  BrowserRouter as Router, 
   Route,
-  Router,
-  Switch
+  Routes 
 } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 import Menu from './routes/menu/Menu';
 import RollContainer from './routes/roll/RollContainer';
 import BookContainer from './routes/book/BookContainer';
 import SlidesContainer from './routes/slides/SlidesContainer';
-const history = createMemoryHistory();
 const { RAZZLE_DATA_SRC } = process.env;
 
 // dev/production flag
 // set to 'dev' if you want to use the local JSON data
 // as your source. Set to 'bartle' to use the
 // Blue Elk server as your data source.
-const j = 'bartle';
+const j = 'dev';
 
 let apiSource = '';
 if ( j === 'bartle') {
   apiSource = 'http://' + RAZZLE_DATA_SRC + ':5050/api/public/';
 }
+
 const App = () => (
-  <Router history={history}>
-      <Switch>
-        <Route exact path='/' component={Menu} />
+  <Router>
+      <Routes>
+        <Route exact path='/' element={<Menu />} />
         <Route
           path='/founder-guardians/'
-          render={(props) => (
+          element={(props) => (
             <RollContainer
               {...props}
               title='Founder Guardian Roll'
@@ -40,7 +40,7 @@ const App = () => (
         />
         <Route
           path='/lonebear-guardians/'
-          render={(props) => (
+          element={(props) => (
             <RollContainer
               {...props}
               title='Lone Bear Guardian Roll'
@@ -52,7 +52,7 @@ const App = () => (
         />
         <Route
           path='/sheshebe-guardians/'
-          render={(props) => (
+          element={(props) => (
             <RollContainer
               {...props}
               title='She-She-Be Guardian Roll'
@@ -64,7 +64,7 @@ const App = () => (
         />
         <Route
           path='/lifetime-guardians/'
-          render={(props) => (
+          element={(props) => (
             <RollContainer
               {...props}
               title='Lifetime Guardian Roll'
@@ -76,7 +76,7 @@ const App = () => (
         />
         <Route
           path='/book-of-memories/'
-          render={(props) => (
+          element={(props) => (
             <BookContainer
               {...props}
               title='Book Of Memories'
@@ -86,7 +86,7 @@ const App = () => (
         />
         <Route
           path='/elevations/'
-          render={(props) => (
+          element={(props) => (
             <RollContainer
               {...props}
               title='Session Elevations'
@@ -96,8 +96,8 @@ const App = () => (
             />
           )}
         />
-        <Route path='/photo-slide-show/' component={SlidesContainer} />
-      </Switch>
+        <Route path='/photo-slide-show/' element={<SlidesContainer />} />
+      </Routes>
   </Router>
 );
 

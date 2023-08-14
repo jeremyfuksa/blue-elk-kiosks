@@ -2,27 +2,34 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   plugins: ['scss'],
-  modify: (config, { target, dev }, webpack) => {
-    // For development, use style-loader instead of MiniCssExtractPlugin
+  modifyWebpackConfig({
+    env: {
+      target, // the target 'node' or 'web'
+      dev, // is this a development build? true or false
+    },
+    webpackConfig, // the created webpack config
+    webpackObject, // the imported webpack node module
+    options,
+    paths, // the modified paths that will be used by Razzle.
+  }) {
     if (dev) {
-      config.module.rules.push({
+      webpackConfig.module.rules.push({
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       });
     } else {
-      // For production, use MiniCssExtractPlugin
-      config.plugins.push(
+      webpackConfig.plugins.push(
         new MiniCssExtractPlugin({
           filename: '[name].css',
         })
       );
-
-      config.module.rules.push({
+      
+      webpackConfig.module.rules.push({
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       });
     }
 
-    return config;
+    return webpackConfig;
   },
 };

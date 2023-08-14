@@ -3,44 +3,41 @@
   "version": "1.3.1",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start",
-    "build": "NODE_ENV=production razzle build",
-    "test": "razzle test --env=jsdom",
-    "prestart:prod": "yarn build",
-    "start:prod": "NODE_ENV=production node build/server.js",
-    "csv-to-json": "node ./scripts/csv-to-json.js",
+    "clean:mac": "rm -rf node_modules package-lock.json yarn.lock",
+    "clean:win": "rd /s /q node_modules package-lock.json yarn.lock",
     "compile-photos": "node ./scripts/dirTree.js ./public/photos",
+    "csv-to-json": "node ./scripts/csv-to-json.js",
     "server:start": "SET PORT=5005&&SET HOST=172.17.184.122&&SET PUBLIC_PATH='172.17.184.122:5005/'&&razzle start",
-    "clean:install": "rm -rf node_modules && npm install"
+    "start": "razzle start",
+    "start:prod": "npm run server:start"
+  },
+  "resolutions": {
+    "node-sass": "file:dependency-stub"
   },
   "dependencies": {
-    "@babel/core": "^7.22.9",
-    "axios": "^0.21.1",
-    "babel-preset-razzle": "^4.2.18",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "html-webpack-plugin": "^4.5.2",
-    "postcss": "^8.4.27",
-    "razzle": "^4.2.18",
-    "razzle-dev-utils": "^4.2.18",
-    "razzle-plugin-scss": "^4.0.4",
-    "react": "^16.12.0",
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
     "react-cx": "^0.1.12",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-transition-group": "^4.3.0",
-    "url-loader": "^4.1.1",
-    "webpack-dev-server": "^3.11.3",
-    "webpack-manifest-plugin": "^4.1.1"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
+    "babel-preset-razzle": "^4.2.18",
     "csvjson": "^5.1.0",
-    "json-loader": "^0.5.7",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^6.0.0",
-    "postcss-normalize": "^9.0.0",
-    "sass-loader": "^12.6.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.7.2"
+    "html-webpack-plugin": "4.5.2",
+    "mini-css-extract-plugin": "0.9.0",
+    "postcss": "8.2.4",
+    "razzle": "^4.2.18",
+    "razzle-dev-utils": "^4.2.18",
+    "razzle-plugin-scss": "^4.2.18",
+    "react-dev-utils": "^12.0.1",
+    "sass": "^1.65.1",
+    "sass-loader": "^13.3.2",
+    "webpack": "4.46.0",
+    "webpack-dev-server": "3.11.0"
+  },
+  "overrides": {
+    "node-sass": "file:dependency-stub"
   }
 }
